@@ -1,52 +1,46 @@
-// screens/ProfessionalFormScreen.js
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebaseConfig'; // Ensure your Firebase setup is correct
+import { useNavigation } from '@react-navigation/native'; // For navigation
 
-export default function ProfessionalFormScreen() {
-  const [name, setName] = useState('');
-  const [credentials, setCredentials] = useState('');
+const ProfessionalFormScreen = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigation = useNavigation(); // Hook for navigation
 
-  const handleSubmit = () => {
-    // You can save the data here or send it to the backend
-    console.log({ name, credentials });
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Authentication successful, navigate to Professional Questionnaire Screen
+        navigation.navigate('ProfessionalQuestionnaireForm');
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Name:</Text>
+    <View style={{ padding: 20 }}>
+      <Text>Professional Login</Text>
+      {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
       <TextInput
-        style={styles.input}
-        placeholder="Enter your name"
-        value={name}
-        onChangeText={setName}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
       />
-      <Text style={styles.label}>Credentials:</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Enter your credentials"
-        value={credentials}
-        onChangeText={setCredentials}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
       />
-      <Button title="Submit" onPress={handleSubmit} />
+      <Button title="Login" onPress={handleLogin} />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-  },
-  label: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 20,
-    borderRadius: 5,
-  },
-});
+export default ProfessionalFormScreen;

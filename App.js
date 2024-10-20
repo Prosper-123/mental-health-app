@@ -1,11 +1,12 @@
-// App.js
-import * as React from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './screens/WelcomeScreen';
 import HomeScreen from './screens/HomeScreen';
 import GuestFormScreen from './screens/GuestFormScreen';
 import ProfessionalFormScreen from './screens/ProfessionalFormScreen';
+import GuestQuestionnaireForm from './screens/GuestQuestionnaireForm';
+import ProfessionalQuestionnaireForm from './screens/ProfessionalQuestionnaireForm';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,8 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="GuestForm" component={GuestFormScreen} />
         <Stack.Screen name="ProfessionalForm" component={ProfessionalFormScreen} />
+        <Stack.Screen name="GuestQuestionnaireForm" component={GuestQuestionnaireForm} />
+        <Stack.Screen name="ProfessionalQuestionnaireForm" component={ProfessionalQuestionnaireForm} />
       </Stack.Navigator>
     </NavigationContainer>
   );

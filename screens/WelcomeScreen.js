@@ -5,10 +5,6 @@ import { ImageBackground } from 'react-native-web';
 
 export default function WelcomeScreen({ navigation }) {
   return (
-    <ImageBackground
-        source={require('../assets/splash.png')}
-        styles={styles.background}
-        >
         
         <View style={styles.container}>
           <Text style={styles.text}>Welcome to Mental Health Awaness !</Text>
@@ -17,7 +13,7 @@ export default function WelcomeScreen({ navigation }) {
             onPress={() => navigation.navigate('Home')}
           />
         </View>
-    </ImageBackground>
+
   );
 }
 
