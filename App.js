@@ -7,6 +7,8 @@ import GuestFormScreen from './screens/GuestFormScreen';
 import ProfessionalFormScreen from './screens/ProfessionalFormScreen';
 import GuestQuestionnaireForm from './screens/GuestQuestionnaireForm';
 import ProfessionalQuestionnaireForm from './screens/ProfessionalQuestionnaireForm';
+import GuestDashboardScreen from './screens/GuestDashboardScreen';
+import ProfessionalDashboardScreen from './screens/ProfessionalDashboardScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +22,8 @@ export default function App() {
         <Stack.Screen name="ProfessionalForm" component={ProfessionalFormScreen} />
         <Stack.Screen name="GuestQuestionnaireForm" component={GuestQuestionnaireForm} />
         <Stack.Screen name="ProfessionalQuestionnaireForm" component={ProfessionalQuestionnaireForm} />
+        <Stack.Screen name="GuestDashboardScreen" component={GuestDashboardScreen} />
+        <Stack.Screen name="ProfessionalDashboardScreen" component={ProfessionalDashboardScreen} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

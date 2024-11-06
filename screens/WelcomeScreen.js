@@ -7,7 +7,9 @@ export default function WelcomeScreen({ navigation }) {
   return (
         
         <View style={styles.container}>
-          <Text style={styles.text}>Welcome to Mental Health Awaness !</Text>
+          <Text style={styles.text}>Welcome to MHAII APP !</Text>
+          <Text style={styles.text}>Your Bridge to Better Mental Health.</Text>
+          
           <Button
             title="Get Started"
             onPress={() => navigation.navigate('Home')}

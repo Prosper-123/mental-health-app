@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, ScrollView } from 'react-native';
+import { View, Text, TextInput, Button, ScrollView, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ProfessionalFormScreen = () => {
   const [name, setName] = useState('');
@@ -13,101 +14,165 @@ const ProfessionalFormScreen = () => {
   const [yearsCertified, setYearsCertified] = useState('');
   const [currentInstitution, setCurrentInstitution] = useState('');
 
+  const navigation = useNavigation();
+
   const handleSubmit = () => {
-    // Handle submission logic if needed later, currently not saving to Firestore
     console.log('Form submitted:', {
       name, age, education, experience, specialization, phone, email, licenseNumber, yearsCertified, currentInstitution
     });
     alert('Form submitted!');
+    navigation.navigate('ProfessionalDashboardScreen'); // Navigate to Professional Dashboard
   };
 
   return (
-    <ScrollView style={{ padding: 20 }}>
-      <Text>Professional KYC Form</Text>
-      
-      <Text>Name:</Text>
-      <TextInput
-        placeholder="Full Name"
-        value={name}
-        onChangeText={setName}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Age:</Text>
-      <TextInput
-        placeholder="Age"
-        value={age}
-        onChangeText={setAge}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Education:</Text>
-      <TextInput
-        placeholder="Educational Background"
-        value={education}
-        onChangeText={setEducation}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Years of Experience:</Text>
-      <TextInput
-        placeholder="Years of Experience"
-        value={experience}
-        onChangeText={setExperience}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Specialization:</Text>
-      <TextInput
-        placeholder="Specialization"
-        value={specialization}
-        onChangeText={setSpecialization}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Phone Number:</Text>
-      <TextInput
-        placeholder="Phone Number"
-        value={phone}
-        onChangeText={setPhone}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Email Address:</Text>
-      <TextInput
-        placeholder="Email Address"
-        value={email}
-        onChangeText={setEmail}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>License Number:</Text>
-      <TextInput
-        placeholder="License Number"
-        value={licenseNumber}
-        onChangeText={setLicenseNumber}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Years Certified:</Text>
-      <TextInput
-        placeholder="Years Certified"
-        value={yearsCertified}
-        onChangeText={setYearsCertified}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Text>Current Institution:</Text>
-      <TextInput
-        placeholder="Current Institution"
-        value={currentInstitution}
-        onChangeText={setCurrentInstitution}
-        style={{ marginBottom: 10, borderWidth: 1, padding: 10 }}
-      />
-      
-      <Button title="Submit" onPress={handleSubmit} />
+    <ScrollView style={styles.container}>
+      <Text style={styles.header}>Professional KYC Form</Text>
+
+      {/* Form Inputs */}
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Full Name:</Text>
+        <TextInput
+          placeholder="Enter your full name"
+          value={name}
+          onChangeText={setName}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Age:</Text>
+        <TextInput
+          placeholder="Enter your age"
+          value={age}
+          onChangeText={setAge}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Educational Background:</Text>
+        <TextInput
+          placeholder="Enter your education level"
+          value={education}
+          onChangeText={setEducation}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Years of Experience:</Text>
+        <TextInput
+          placeholder="Enter years of experience"
+          value={experience}
+          onChangeText={setExperience}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Specialization:</Text>
+        <TextInput
+          placeholder="Enter your specialization"
+          value={specialization}
+          onChangeText={setSpecialization}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Phone Number:</Text>
+        <TextInput
+          placeholder="Enter your phone number"
+          value={phone}
+          onChangeText={setPhone}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Email Address:</Text>
+        <TextInput
+          placeholder="Enter your email address"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>License Number:</Text>
+        <TextInput
+          placeholder="Enter your license number"
+          value={licenseNumber}
+          onChangeText={setLicenseNumber}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Years Certified:</Text>
+        <TextInput
+          placeholder="Enter years of certification"
+          value={yearsCertified}
+          onChangeText={setYearsCertified}
+          style={styles.input}
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Current Institution:</Text>
+        <TextInput
+          placeholder="Enter your current institution"
+          value={currentInstitution}
+          onChangeText={setCurrentInstitution}
+          style={styles.input}
+        />
+      </View>
+
+      {/* Submit Button */}
+      <View style={styles.buttonContainer}>
+        <Button title="Submit" onPress={handleSubmit} color="#007bff" />
+      </View>
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    backgroundColor: '#f9f9f9',
+  },
+  header: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  inputContainer: {
+    marginBottom: 15,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 8,
+    color: '#333',
+  },
+  input: {
+    height: 45,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#ddd',
+    paddingLeft: 15,
+    fontSize: 16,
+    backgroundColor: '#fff',
+    color: '#333',
+  },
+  buttonContainer: {
+    marginTop: 20,
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+});
 
 export default ProfessionalFormScreen;
